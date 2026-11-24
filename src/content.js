@@ -19,6 +19,10 @@ export const CONTENT = {
     title: "Đốt Vía Online | Đốt mỡ thì nhẹ cân, đốt vía thì nhẹ người",
     description:
       "Xả xui cuối năm 2026 không cần lửa thật. Viết điều xui, cuộn chuột đốt giấy, bước qua than hồng 7 hoặc 9 nhịp, rồi xin một quẻ Vía Lành. Chung cư nào cũng chơi được.",
+    // Địa chỉ web công khai, phải đầy đủ https:// và có dấu / ở cuối. Đổi tên repo/tên miền thì sửa dòng này
+    url: "https://emmaziinggg.github.io/dot-via-online/",
+    // Ảnh thumbnail khi chia sẻ link (file trong thư mục public/, khổ 1200x630)
+    image: "og-image.jpg",
   },
 
   // ===============================================================

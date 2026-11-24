@@ -10,7 +10,8 @@ const esc = (s) =>
 const metaFromContent = () => ({
   name: "meta-from-content",
   transformIndexHtml(html) {
-    const { title, description } = CONTENT.meta;
+    const { title, description, url, image } = CONTENT.meta;
+    const imageUrl = new URL(image, url).href; // mạng xã hội cần đường dẫn ảnh đầy đủ
     return html
       .replace("<!--META_TITLE-->", `<title>${esc(title)}</title>`)
       .replace(
@@ -20,6 +21,13 @@ const metaFromContent = () => ({
           `<meta property="og:title" content="${esc(title)}" />`,
           `<meta property="og:description" content="${esc(description)}" />`,
           `<meta property="og:type" content="website" />`,
+          `<meta property="og:url" content="${esc(url)}" />`,
+          `<meta property="og:image" content="${esc(imageUrl)}" />`,
+          `<meta property="og:image:width" content="1200" />`,
+          `<meta property="og:image:height" content="630" />`,
+          `<meta property="og:image:alt" content="${esc(title)}" />`,
+          `<meta name="twitter:card" content="summary_large_image" />`,
+          `<meta name="twitter:image" content="${esc(imageUrl)}" />`,
         ].join("\n    ")
       );
   },
