@@ -1,0 +1,9 @@
+node_modules
+dist
+.DS_Store
+
+# Ảnh tham khảo art direction: chỉ để làm việc, không đăng lên repo công khai
+ref-*.jpg
+
+# Cài đặt Claude riêng trên máy
+.claude/settings.local.json

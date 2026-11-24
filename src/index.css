@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip; /* chặn hẳn cuộn ngang, kể cả khi trình duyệt tự cuộn tới phần tử */
+  }
+  body {
+    @apply bg-giay text-muc font-body antialiased;
+    overflow-x: clip;
+  }
+  /* Vân giấy in riso phủ toàn trang */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.38  0 0 0 0 0.28  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  :focus-visible {
+    outline: 3px solid #29a8e0;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Hạt halftone */
+  .halftone-lam {
+    background-color: #f5f0e6;
+    background-image: radial-gradient(#29a8e0 38%, transparent 40%);
+    background-size: 7px 7px;
+  }
+  .halftone-sen {
+    background-image: radial-gradient(rgba(230, 0, 126, 0.55) 35%, transparent 38%);
+    background-size: 6px 6px;
+  }
+  /* Lệch màu in: bóng màu lam lệch nhẹ sau chữ */
+  .riso-text {
+    text-shadow: 2px 1.5px 0 rgba(41, 168, 224, 0.55);
+  }
+  .riso-text-cam {
+    text-shadow: 2px 1.5px 0 rgba(247, 147, 30, 0.6);
+  }
+  .riso-shift {
+    filter: drop-shadow(2px 1px 0 rgba(41, 168, 224, 0.45));
+  }
+  .btn-chunky {
+    @apply inline-flex min-h-[48px] items-center justify-center rounded-full px-7 py-3 font-display text-lg transition-transform active:translate-y-[2px];
+    box-shadow: 3px 4px 0 #2b1b3d;
+  }
+  .btn-chunky:active {
+    box-shadow: 1px 2px 0 #2b1b3d;
+  }
+  .btn-ghost {
+    @apply inline-flex min-h-[48px] items-center justify-center rounded-full border-2 border-muc px-6 py-3 font-body font-bold text-muc transition-colors hover:bg-nghe/40;
+  }
+  .eyebrow {
+    @apply font-body text-[11px] font-bold uppercase tracking-[0.22em];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .motion-loop {
+    animation: none !important;
+  }
+}
